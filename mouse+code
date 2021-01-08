@@ -1,0 +1,50 @@
+#include "Keyboard.h" // Esta biblioteca só funciona com o Arduino Leonardo
+
+int pinos[]={18,19,20,21,22}; // Pinos 20 e 21 são os pinos analócos A2 e A3
+
+int tempoDeResposta = 200; // Aqui você ajusta o tempo de resposta do teclado
+
+void setup(){
+  for (int x=0; x<=5; x++) {
+      pinMode(pinos[x],INPUT_PULLUP); // Declara de todos os pinos como entradas.
+    }        
+      Keyboard.begin();
+}
+
+
+void loop(){
+  if (digitalRead(18)== LOW) {
+      Keyboard.press(KEY_RIGHT_ARROW); 
+      Keyboard.releaseAll();
+      
+      delay(tempoDeResposta); 
+    }
+
+  if (digitalRead(19)== LOW) {
+      Keyboard.press(KEY_LEFT_ARROW);  
+      Keyboard.releaseAll();
+      
+      delay(tempoDeResposta); 
+  }
+
+  if (digitalRead(20)== LOW) {
+      Keyboard.press(KEY_UP_ARROW);
+      Keyboard.releaseAll();
+
+      delay(tempoDeResposta); 
+  }
+
+  if (digitalRead(21)== LOW) {
+      Keyboard.press(KEY_DOWN_ARROW);
+      Keyboard.releaseAll();
+      
+      delay(tempoDeResposta); 
+  }
+ 
+  if (digitalRead(22)== LOW) {
+      Keyboard.press(176);
+      Keyboard.releaseAll();
+  
+      delay(tempoDeResposta);
+  }
+}
